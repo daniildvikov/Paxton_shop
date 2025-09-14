@@ -1,0 +1,52 @@
+/* Страница каталога / главная */
+
+/* Заголовок секции */
+.section-title {
+    font-size: 26px;
+    margin: 30px 0 20px;
+}
+
+/* Сетка товаров */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+    border: 1px solid #eaeaea;
+}
+
+.product-card:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.product-card h3 {
+    font-size: 20px;
+    margin: 10px 0 5px;
+}
+
+.product-card .desc {
+    font-size: 14px;
+    color: #777;
+    min-height: 40px;
+}
+
+.product-card .price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}

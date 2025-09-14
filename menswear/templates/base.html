@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ру">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Магазин{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base_style.css' %}">
+    {% block extra_css %}{% endblock %}
+    
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <nav class="nav-left">
+                <a href="#">New In</a>
+                <a href="#">Men</a>
+                <a href="#">Women</a>
+                <a href="#">Children</a>
+                <a href="#">Collections</a>
+            </nav>
+
+            <div class="logo">
+                <a href="/"><img src="{% static 'img/logo.png' %}" alt="Logo"></a>
+            </div>
+
+            <div class="nav-right">
+                <a href="#"><img src="{% static 'icons/chat.svg' %}" alt="chat"></a>
+                <a href="#"><img src="{% static 'icons/search.svg' %}" alt="search"></a>
+                <a href="#"><img src="{% static 'icons/bookmark.svg' %}" alt="bookmark"></a>
+                <a href="#"><img src="{% static 'icons/user.svg' %}" alt="user"></a>
+                <a href="#"><img src="{% static 'icons/bag.svg' %}" alt="bag"></a>
+            </div>
+
+            <!-- Мобильная шапка -->
+            <div class="mobile-bar" role="navigation" aria-label="Mobile header">
+                <button class="btn-burger" aria-label="Открыть меню">
+                    <span></span><span></span><span></span>
+                </button>
+                <a class="mobile-brand" href="/" aria-label="На главную">Paxton</a>
+                <button class="btn-search" aria-label="Поиск"></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer class="site-footer">
+        <div class="container">
+            <section class="footer-newsletter">
+                <h3>Newsletter</h3>
+                <form class="newsletter-form" action="#" method="post">
+                    <input type="email" name="email" placeholder="Enter e-mail" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </section>
+
+            <section class="footer-columns">
+                <div class="footer-col">
+                    <h4>Customer Care</h4>
+                    <a href="#">Exclusive Services</a>
+                    <a href="#">Orders and Returns</a>
+                    <a href="#">Size Guide</a>
+                    <a href="#">Shipment</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Boutique Locator</a>
+                    <a href="#">Wishlist</a>
+                    <a href="#">FAQ</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Philosophy</h4>
+                    <a href="#">Beauty</a>
+                    <a href="#">The Company</a>
+                    <a href="#">Craftsmanship and Manual Skills</a>
+                    <a href="#">Solomeo</a>
+                </div>
+                <div class="footer-col">
+                    <h4>General Information</h4>
+                    <a href="#">Legal Area</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">Investor Relations</a>
+                    <a href="#">Accessibility Statement</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow us on</h4>
+                    <div class="social-row">
+                        <a href="#" aria-label="Instagram">IG</a>
+                        <a href="#" aria-label="LinkedIn">IN</a>
+                        <a href="#" aria-label="Facebook">FB</a>
+                        <a href="#" aria-label="Pinterest">P</a>
+                        <a href="#" aria-label="YouTube">YT</a>
+                        <a href="#" aria-label="TikTok">TT</a>
+                        <a href="#" aria-label="Spotify">SP</a>
+                    </div>
+                </div>
+            </section>
+
+            <div class="footer-bottom">
+                <p>2025 © Paxton</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Нижняя мобильная навигация -->
+    <nav class="mobile-bottom-nav" aria-label="Нижняя навигация">
+        <a href="/" class="mbn-item" aria-label="Главная">
+            <span class="ico-home" aria-hidden="true"></span>
+            <span class="mbn-label">Главная</span>
+        </a>
+        <button class="mbn-item" aria-label="Меню">
+            <span class="ico-menu" aria-hidden="true"></span>
+            <span class="mbn-label">Меню</span>
+        </button>
+        <a href="#" class="mbn-item" aria-label="Корзина">
+            <span class="ico-bag" aria-hidden="true"></span>
+            <span class="mbn-label">Корзина</span>
+        </a>
+        <a href="#" class="mbn-item" aria-label="Профиль">
+            <span class="ico-user" aria-hidden="true"></span>
+            <span class="mbn-label">Профиль</span>
+        </a>
+    </nav>
+  </body>
+</html>

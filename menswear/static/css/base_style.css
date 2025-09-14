@@ -1,0 +1,222 @@
+/* Общие стили */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    color: #111;
+    background: #fff;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Шапка */
+.site-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    z-index: 1000;
+}
+
+/* Хедер должен тянуться на всю ширину экрана */
+.site-header .container { max-width: none; padding-left: 24px; padding-right: 24px; }
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-left a, .nav-right a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #000;
+    transition: color 0.3s ease;
+}
+
+.nav-left a:hover, .nav-right a:hover {
+    color: #666;
+}
+
+.logo img {
+    height: 28px;
+}
+
+/* Основной контент */
+.site-main {
+    padding: 28px 0 48px;
+    background: #fff;
+}
+
+/* -------- Mobile header (<=1280px) -------- */
+.mobile-bar { display: none; align-items: center; width: 100%; }
+.btn-burger, .btn-search {
+    width: 36px; height: 36px; border: none; background: transparent; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+}
+.btn-burger span{display:block;width:18px;height:2px;background:#111;margin:2px 0;border-radius:2px}
+.btn-search{position:relative}
+.btn-search::before{content:"";width:16px;height:16px;border:2px solid #111;border-radius:50%;display:block}
+.btn-search::after{content:"";position:absolute;width:8px;height:2px;background:#111;right:8px;bottom:8px;transform:rotate(45deg);transform-origin:left center}
+.mobile-brand{flex:1;text-align:center;text-decoration:none;color:#111;font-weight:600}
+.mobile-brand{font-size:16px;}
+
+@media (max-width: 1280px) {
+    .nav-left, .nav-right, .logo { display: none; }
+    .mobile-bar { display: flex; }
+    .header-inner{ padding: 10px 16px; }
+}
+
+/* Мобильное меню */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #000;
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+    .nav-left {
+        display: none;
+    }
+    .nav-right {
+        display: none;
+    }
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    .logo img {
+        height: 24px;
+    }
+}
+
+/* -------- Footer -------- */
+.site-footer {
+    background: #fff;
+    border-top: 1px solid #eee;
+    color: #111;
+}
+
+.footer-newsletter {
+    padding: 36px 0 8px;
+}
+
+.footer-newsletter h3 {
+    margin: 0 0 14px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.newsletter-form {
+    display: flex;
+    max-width: 520px;
+}
+
+.newsletter-form input[type="email"] {
+    flex: 1;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 14px;
+    background: #fff;
+    color: #111;
+}
+
+.newsletter-form button {
+    padding: 12px 18px;
+    border: 1px solid #333;
+    background: #333;
+    color: #fff;
+    border-radius: 0 4px 4px 0;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding: 28px 0 32px;
+}
+
+.footer-col h4 {
+    margin: 0 0 12px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.footer-col a {
+    display: block;
+    text-decoration: none;
+    color: #444;
+    padding: 4px 0;
+    font-size: 14px;
+}
+
+.footer-col a:hover { color: #000; }
+
+.social-row a {
+    display: inline-block;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    padding: 6px 8px;
+    font-size: 12px;
+    color: #333;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    border-top: 1px solid #eee;
+    padding: 14px 0 18px;
+    font-size: 13px;
+    color: #666;
+}
+
+@media (max-width: 1024px) {
+    .footer-columns {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .newsletter-form { max-width: 100%; }
+    .footer-columns { grid-template-columns: 1fr; }
+}
+
+/* -------- Mobile bottom nav -------- */
+.mobile-bottom-nav{
+    position: fixed; left:0; right:0; bottom:0; height:56px; background:#fff;
+    border-top:1px solid #eee; display:none; z-index: 1001;
+}
+.mobile-bottom-nav .mbn-item{flex:1; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; color:#111; text-decoration:none; font-size:11px; background:transparent; border:0}
+.mobile-bottom-nav .ico-home,.mobile-bottom-nav .ico-menu,.mobile-bottom-nav .ico-bag,.mobile-bottom-nav .ico-user{width:20px;height:20px;border:1.6px solid #111;border-radius:4px;display:block}
+.mobile-bottom-nav .ico-bag{border-radius:3px}
+.mobile-bottom-nav .ico-user{border-radius:50%}
+
+@media (max-width: 1280px) {
+    .mobile-bottom-nav{ display:flex; }
+    .site-main{ padding-bottom: 104px; }
+}
