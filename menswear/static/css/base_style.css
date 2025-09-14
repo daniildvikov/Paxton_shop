@@ -156,16 +156,27 @@ body {
 
 .footer-columns {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     padding: 28px 0 32px;
 }
 
-.footer-col h4 {
+/* Заголовок/кнопка аккордеона */
+.footer-acc-header{
     margin: 0 0 12px;
     font-size: 16px;
     font-weight: 600;
+    background: none;
+    border: 0;
+    padding: 0;
+    color: #111;
+    text-align: left;
+    cursor: default; /* на десктопе не кликабельно */
 }
+.footer-acc-header::after{ display:none; }
+
+/* Контейнер ссылок */
+.footer-acc-panel{ display:block; }
 
 .footer-col a {
     display: block;
@@ -204,6 +215,38 @@ body {
 @media (max-width: 600px) {
     .newsletter-form { max-width: 100%; }
     .footer-columns { grid-template-columns: 1fr; }
+}
+
+/* --- Аккордеон футера (<=1280px) --- */
+@media (max-width: 1280px){
+  .footer-columns{ display:block; padding: 0; }
+  .footer-col{ border-top:1px solid #eee; }
+  .footer-col:last-child{ border-bottom:1px solid #eee; }
+
+  .footer-acc-header{
+    width:100%;
+    padding:16px 0;
+    cursor:pointer;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .footer-acc-header::after{
+    content:'\203A'; /* › */
+    display:block; color:#999; font-size:20px; line-height:1;
+    transform: rotate(0deg);
+    transition: transform .2s ease;
+  }
+  .footer-acc-header[aria-expanded="true"]::after{ transform: rotate(90deg); }
+
+  .footer-acc-panel{
+    overflow:hidden;
+    max-height:0px;
+    transition: max-height .25s ease;
+    padding-bottom:0;
+  }
+  .footer-acc-panel.open{ padding-bottom:12px; }
+
+  /* Социальные иконки — без аккордеона */
+  .footer-social{ padding: 12px 0; }
 }
 
 /* -------- Mobile bottom nav -------- */

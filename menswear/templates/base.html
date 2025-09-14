@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="ру">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,43 +54,48 @@
     <footer class="site-footer">
         <div class="container">
             <section class="footer-newsletter">
-                <h3>Newsletter</h3>
+                <h3>Рассылка</h3>
                 <form class="newsletter-form" action="#" method="post">
-                    <input type="email" name="email" placeholder="Enter e-mail" required>
-                    <button type="submit">Subscribe</button>
+                    <input type="email" name="email" placeholder="Введите e-mail" required>
+                    <button type="submit">Подписаться</button>
                 </form>
             </section>
 
             <section class="footer-columns">
+                <!-- Покупателям -->
                 <div class="footer-col">
-                    <h4>Customer Care</h4>
-                    <a href="#">Exclusive Services</a>
-                    <a href="#">Orders and Returns</a>
-                    <a href="#">Size Guide</a>
-                    <a href="#">Shipment</a>
-                    <a href="#">Contact Us</a>
-                    <a href="#">Boutique Locator</a>
-                    <a href="#">Wishlist</a>
-                    <a href="#">FAQ</a>
+                    <button class="footer-acc-header" type="button" aria-expanded="false">Покупателям</button>
+                    <div class="footer-acc-panel">
+                        <a href="#">Эксклюзивные услуги</a>
+                        <a href="#">Заказы и возвраты</a>
+                        <a href="#">Таблица размеров</a>
+                        <a href="#">Доставка</a>
+                        <a href="#">Контакты</a>
+                        <a href="#">Магазины</a>
+                        <a href="#">Избранное</a>
+                        <a href="#">Вопросы и ответы</a>
+                    </div>
                 </div>
+
+                <!-- Компания (объединены разделы о компании и информация) -->
                 <div class="footer-col">
-                    <h4>Philosophy</h4>
-                    <a href="#">Beauty</a>
-                    <a href="#">The Company</a>
-                    <a href="#">Craftsmanship and Manual Skills</a>
-                    <a href="#">Solomeo</a>
+                    <button class="footer-acc-header" type="button" aria-expanded="false">Компания</button>
+                    <div class="footer-acc-panel">
+                        <a href="#">О компании</a>
+                        <a href="#">Эстетика</a>
+                        <a href="#">Ремесла и ручная работа</a>
+                        <a href="#">Соломео</a>
+                        <a href="#">Правовая информация</a>
+                        <a href="#">Политика конфиденциальности</a>
+                        <a href="#">Политика Cookie</a>
+                        <a href="#">Для инвесторов</a>
+                        <a href="#">Доступность сайта</a>
+                    </div>
                 </div>
-                <div class="footer-col">
-                    <h4>General Information</h4>
-                    <a href="#">Legal Area</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Cookie Policy</a>
-                    <a href="#">Investor Relations</a>
-                    <a href="#">Accessibility Statement</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Follow us on</h4>
-                    <div class="social-row">
+
+                <!-- Соцсети: только значки -->
+                <div class="footer-col footer-social">
+                    <div class="social-row" aria-label="Мы в соцсетях">
                         <a href="#" aria-label="Instagram">IG</a>
                         <a href="#" aria-label="LinkedIn">IN</a>
                         <a href="#" aria-label="Facebook">FB</a>
@@ -107,6 +112,45 @@
             </div>
         </div>
     </footer>
+
+    <script>
+      // Акордеон в футере для экранов <= 1280px
+      (function(){
+        function applyAccordionBehavior(){
+          var isMobile = window.matchMedia('(max-width: 1280px)').matches;
+          document.querySelectorAll('.footer-acc-header').forEach(function(btn){
+            var panel = btn.nextElementSibling;
+            if(!panel) return;
+            if(isMobile){
+              // Скрытый контент по умолчанию
+              if(btn.getAttribute('data-initialized') !== '1'){
+                btn.addEventListener('click', function(){
+                  var expanded = this.getAttribute('aria-expanded') === 'true';
+                  this.setAttribute('aria-expanded', String(!expanded));
+                  if(!expanded){ panel.style.maxHeight = panel.scrollHeight + 'px'; panel.classList.add('open'); }
+                  else { panel.style.maxHeight = '0px'; panel.classList.remove('open'); }
+                });
+                btn.setAttribute('data-initialized','1');
+              }
+              if(btn.getAttribute('aria-expanded') !== 'true'){
+                panel.style.maxHeight = '0px';
+              }
+            } else {
+              // На десктопе всегда раскрыто
+              btn.setAttribute('aria-expanded','true');
+              panel.style.maxHeight = 'none';
+              panel.classList.add('open');
+            }
+          });
+        }
+        applyAccordionBehavior();
+        window.addEventListener('resize', function(){
+          // Дебаунс
+          clearTimeout(window.__footerAccTimer);
+          window.__footerAccTimer = setTimeout(applyAccordionBehavior, 150);
+        });
+      })();
+    </script>
 
     <!-- Нижняя мобильная навигация -->
     <nav class="mobile-bottom-nav" aria-label="Нижняя навигация">
