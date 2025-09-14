@@ -83,10 +83,9 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-# Проект использует статику из общей папки и из папки проекта
+# Пути к статике (только существующие директории)
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    BASE_DIR / "menswear" / "static",
+    BASE_DIR / "static",           # menswear/static
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
