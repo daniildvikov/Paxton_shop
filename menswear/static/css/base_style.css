@@ -120,6 +120,8 @@ body {
 
 .footer-newsletter {
     padding: 36px 0 8px;
+    max-width: calc((100% - 80px) / 3);
+    margin-right: auto;
 }
 
 .footer-newsletter h3 {
@@ -130,7 +132,7 @@ body {
 
 .newsletter-form {
     display: flex;
-    max-width: 520px;
+    width: 100%;
 }
 
 .newsletter-form input[type="email"] {
@@ -207,13 +209,30 @@ body {
 }
 
 @media (max-width: 1024px) {
+    .footer-newsletter {
+        max-width: calc((100% - 40px) / 2);
+    }
     .footer-columns {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 600px) {
-    .newsletter-form { max-width: 100%; }
+    .footer-newsletter {
+        max-width: 100%;
+    }
+    .newsletter-form {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .newsletter-form input[type="email"] {
+        border-right: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .newsletter-form button {
+        border-radius: 4px;
+        width: 100%;
+    }
     .footer-columns { grid-template-columns: 1fr; }
 }
 

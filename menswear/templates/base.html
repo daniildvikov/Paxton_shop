@@ -114,7 +114,7 @@
     </footer>
 
     <script>
-      // Акордеон в футере для экранов <= 1280px
+      // Footer accordion behavior for <= 1280px screens
       (function(){
         function applyAccordionBehavior(){
           var isMobile = window.matchMedia('(max-width: 1280px)').matches;
@@ -122,7 +122,10 @@
             var panel = btn.nextElementSibling;
             if(!panel) return;
             if(isMobile){
-              // Скрытый контент по умолчанию
+              if(btn.getAttribute('data-accordion-mode') !== 'mobile'){
+                btn.setAttribute('aria-expanded','false');
+              }
+              btn.setAttribute('data-accordion-mode','mobile');
               if(btn.getAttribute('data-initialized') !== '1'){
                 btn.addEventListener('click', function(){
                   var expanded = this.getAttribute('aria-expanded') === 'true';
@@ -132,11 +135,15 @@
                 });
                 btn.setAttribute('data-initialized','1');
               }
-              if(btn.getAttribute('aria-expanded') !== 'true'){
+              if(btn.getAttribute('aria-expanded') === 'true'){
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+                panel.classList.add('open');
+              } else {
                 panel.style.maxHeight = '0px';
+                panel.classList.remove('open');
               }
             } else {
-              // На десктопе всегда раскрыто
+              btn.setAttribute('data-accordion-mode','desktop');
               btn.setAttribute('aria-expanded','true');
               panel.style.maxHeight = 'none';
               panel.classList.add('open');
@@ -145,7 +152,6 @@
         }
         applyAccordionBehavior();
         window.addEventListener('resize', function(){
-          // Дебаунс
           clearTimeout(window.__footerAccTimer);
           window.__footerAccTimer = setTimeout(applyAccordionBehavior, 150);
         });
